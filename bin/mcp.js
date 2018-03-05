@@ -42,11 +42,9 @@ function createApplication(app_name,urlpath){
         console.log();
         console.log('   run the app:');
 
-        if (utils.launchedFromCmd()) {
-            console.log('     %s SET DEBUG=%s:* & npm start', prompt, app_name);
-        } else {
-            console.log('     %s DEBUG=%s:* npm start', prompt, app_name);
-        }
+            console.log('     %s npm dev');
+            console.log('     %s npm serve');            
+        
 
         console.log();
     }
