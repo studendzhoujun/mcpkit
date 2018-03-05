@@ -1,0 +1,17 @@
+{
+  "name": "mcp-kit",
+  "version": "1.0.2",
+  "description": "generator weex project cli",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "zhoujun",
+  "license": "ISC",
+  "bin": {
+    "mcp": "bin/mcp.js"
+  },
+  "dependencies": {
+    "commander": "^2.14.1",
+    "gutil-color-log": "*"
+  }
+}
