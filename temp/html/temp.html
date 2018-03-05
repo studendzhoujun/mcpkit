@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="format-detection" content="telephone=no, email=no">
+  <style>
+  @supports(height:constant(safe-area-inset-bottom)){
+    .box{
+      padding-bottom:constant(safe-area-inset-bottom)
+    }
+  }
+  </style>
+  <script src="./assets/vue.runtime.js"></script>
+  <script src="./assets/index.min.js"></script>
+  <script src="./assets/weexmodule.js"></script>  
+</head>
+<body class="box" style="margin:0" data-page="<%= htmlWebpackPlugin.options.title %>.m">
+  <div id="root"></div>
+</body>
+<script src="https://js.gomein.net.cn/sitemonitor/wap.js"></script>
+</html>

@@ -1,0 +1,2 @@
+### generator weex project cli
+

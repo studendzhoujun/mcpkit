@@ -7,26 +7,48 @@ const utils =require('../utils/index.js')
 const fs = require('fs')
 const path = require('path')
 
-function say(){
-    log('green','hello everyone')
-}
-function createProject(name){
-    log('green',`create project ${name}`)
-    console.log(__dirname)
-    let destinationPath = path.join(__dirname,name)
+program
+.version('1.0.2')
+.option('-v, version','list version')
+.option('-c, create','create a project')
+.parse(process.argv)
+
+if(program.create){
+    let destinationPath = program.args.shift() || '.';
+    let appName = utils.createAppName(path.resolve(destinationPath)) || 'weex'
     utils.emptyDirectory(destinationPath,(empty)=>{
-        console.log(empty)
+        if(empty){
+            log('green','无此目录，可以创建')
+            log('green',appName)
+            createApplication(appName,destinationPath)     
+        }else{
+            log('red','此目录已存在')
+        }
     })
 }
-let myCommand = program.version('0.0.2','-v, --version')
 
-myCommand.command('say <name>').action((name)=>{
-    log('green',`${name}`)
-    say()
-})
+/**
+ * @param {string} app_name
+ * @param {string} path
+ */
+function createApplication(app_name,urlpath){
+    utils.exists(path.join(__dirname, '..', 'temp'),urlpath,utils.copy)
+    complete()
+    function complete() {
+        var prompt = utils.launchedFromCmd() ? '>' : '$';
+        console.log();
+        console.log('   install dependencies:');
+        console.log('     %s cd %s && npm install', prompt, urlpath);
+        console.log();
+        console.log('   run the app:');
 
-myCommand.command('create <name>').action((name)=>{
-    log('green',`${__dirname}`)
-    createProject(name)
-})
-program.parse(process.argv)
+        if (utils.launchedFromCmd()) {
+            console.log('     %s SET DEBUG=%s:* & npm start', prompt, app_name);
+        } else {
+            console.log('     %s DEBUG=%s:* npm start', prompt, app_name);
+        }
+
+        console.log();
+    }
+
+}

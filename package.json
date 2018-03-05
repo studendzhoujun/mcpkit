@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "commander": "^2.14.1",
-    "gutil-color-log": "*"
+    "gutil-color-log": "*",
+    "mkdirp": "^0.5.1"
   }
 }
