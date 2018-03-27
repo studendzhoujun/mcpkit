@@ -2,7 +2,7 @@
  * @Author: zhouJun 
  * @Date: 2017-12-06 16:43:45 
  * @Last Modified by: zhouJun
- * @Last Modified time: 2018-01-24 17:29:43
+ * @Last Modified time: 2018-03-27 10:31:59
  */
 
 const path = require('path')
@@ -82,6 +82,15 @@ function getBaseConfig () {
       ]
     },
     vue: {
+      optimizeSSR: false,
+      compilerModules: [
+        {
+          postTransformNode: el => {
+            // to convert vnode for weex components.
+            require('weex-vue-precompiler')()(el)
+          }
+        }
+      ]
     },
     plugins: [
       new webpack.optimize.UglifyJsPlugin({
@@ -105,6 +114,19 @@ webConfig.output.filename = '[name].web.js'
 webConfig.output.path = 'dist/wxwap/'
 webConfig.module.loaders[1].loaders.push('vue')
 webConfig.plugins.push(websourcePlugin)
+webConfig.vue.postcss = [
+  // to convert weex exclusive styles.
+  require('postcss-plugin-weex')(),
+  require('autoprefixer')({
+    browsers: ['> 0.1%', 'ios >= 8', 'not ie < 12']
+  }),
+  require('postcss-plugin-px2rem')({
+    // base on 750px standard.
+    rootValue: 75,
+    // to leave 1px alone.
+    minPixelValue: 1.01
+  })
+];
 Object.keys(entries).forEach(function(name) {
   // 每个页面生成一个html
   var plugin = new HtmlWebpackPlugin({
