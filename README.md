@@ -23,7 +23,7 @@
 ### 版本
 
 ``` bash
-# 1.0.5
+# 1.0.6
  npm run dev
  npm run serve
 

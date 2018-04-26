@@ -8,7 +8,7 @@ const fs = require('fs')
 const path = require('path')
 
 program
-.version('1.0.5')
+.version('1.1.0')
 .option('-v, version','list version')
 .option('-c, create','create a project')
 .parse(process.argv)
