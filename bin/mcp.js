@@ -8,7 +8,7 @@ const fs = require('fs')
 const path = require('path')
 
 program
-.version('1.1.0')
+.version('1.1.1')
 .option('-v, version','list version')
 .option('-c, create','create a project')
 .parse(process.argv)
@@ -42,8 +42,7 @@ function createApplication(app_name,urlpath){
         console.log();
         console.log('   run the app:');
 
-            console.log('     %s npm run dev',prompt);
-            console.log('     %s npm run serve',prompt);            
+            console.log('     %s npm run start',prompt);           
         
 
         console.log();
