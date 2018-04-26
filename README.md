@@ -9,8 +9,7 @@
  npm install
 
 # 启动项目
- npm run dev
- npm run serve
+ npm start
 
 ```
 ### 打包zip
@@ -21,4 +20,14 @@
  
 ````
 
+### 版本
+
+``` bash
+# 1.0.5
+ npm run dev
+ npm run serve
+
+# 1.1.0
+ npm start
+```
 

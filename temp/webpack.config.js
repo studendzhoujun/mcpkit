@@ -2,7 +2,7 @@
  * @Author: zhouJun 
  * @Date: 2017-12-07 16:20:31 
  * @Last Modified by: zhouJun
- * @Last Modified time: 2018-03-27 10:31:17
+ * @Last Modified time: 2018-04-26 14:48:13
  */
 
 const path = require('path')
@@ -59,7 +59,9 @@ function getBaseConfig () {
     },
     devtool:'inline-source-map',
     output: {
-      path: 'dist',
+      // path: 'dist',
+      path:path.resolve(__dirname,'../dist'),
+      publicPath:'/'
     },
     module: {
       loaders: [
@@ -109,7 +111,7 @@ function getBaseConfig () {
 
 var webConfig = getBaseConfig()
 webConfig.output.filename = '[name].web.js'
-webConfig.output.path = 'dist/wxwap/'
+// webConfig.output.path = 'dist/wxwap/'
 webConfig.module.loaders[1].loaders.push('vue')
 webConfig.plugins.push(websourcePlugin)
 webConfig.vue.postcss = [
@@ -143,7 +145,7 @@ Object.keys(entries).forEach(function(name) {
 
 var weexConfig = getBaseConfig()
 weexConfig.output.filename = '[name].js'
-weexConfig.output.path = 'dist/wxnative/'
+// weexConfig.output.path = 'dist/wxnative/'
 weexConfig.module.loaders[1].loaders.push('weex')
 
  module.exports = [webConfig, weexConfig]

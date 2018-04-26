@@ -8,11 +8,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-touch-fullscreen" content="yes">
   <meta name="format-detection" content="telephone=no, email=no">
-  <link rel="stylesheet" href="./assets/style.css">
+  <link rel="shortcut icon" href="fav.png">
+  <link rel="stylesheet" href="./style.css">
   <script src="./config.js"></script>
-  <script src="./assets/url.js"></script>
-  <script src="./assets/qrcode.js"></script>
-  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script src="./qrcode.js"></script>
+  <script src="./vue.js"></script>
 </head>
 <body style="background:#00bdff">
   <h1 style="color:aliceblue">Weex Preview</h1>
@@ -32,22 +32,22 @@ var protocol = location.protocol + '//'
 var hostname = typeof CURRENT_IP === 'string' ? CURRENT_IP : location.hostname
 var port = location.port ? ':' + location.port : ''
 var curl=urlList.map(item=>{
-      return protocol + hostname + port + '/dist/wxnative/' +item
+      return protocol + hostname + port + '/' +item+'.js'
  })
     console.log(curl)
     new Vue({
       el: '#app',
       template: '#app-template',
       data: { 
-        val: url ,
+        // val: url ,
         urlList:curl,
       },
       filters:{
         htmlUrl(value){
-            return value.replace('.js','.html').replace('wxnative','wxwap')
+            return value.replace('.js','.html')
         },
         formatTitle(value){
-            return value.split('/').pop().replace('.weex.js','')
+            return value.split('/').pop().replace('.js','')
         }
       },
       mounted: function () {
