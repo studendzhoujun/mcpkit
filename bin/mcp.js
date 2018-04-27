@@ -8,7 +8,7 @@ const fs = require('fs')
 const path = require('path')
 
 program
-.version('1.1.1')
+.version(require('../package.json').version)
 .option('-v, version','list version')
 .option('-c, create','create a project')
 .parse(process.argv)

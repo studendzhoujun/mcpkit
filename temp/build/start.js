@@ -2,7 +2,7 @@
  * @Author: zhouJun 
  * @Date: 2018-04-25 16:05:15 
  * @Last Modified by: zhouJun
- * @Last Modified time: 2018-04-26 14:32:55
+ * @Last Modified time: 2018-04-27 14:56:04
  */
 const express = require('express')
 const path = require('path')
@@ -51,7 +51,7 @@ app.use(webpackDevMiddleware(compiler,{
 }))
 // mock/proxy api requests
 let mockDir = path.resolve(__dirname,'../mock');
-;;(function(mockDir){
+;;(function setMock(mockDir){
    fs.readdirSync(mockDir).forEach((file)=>{
        let filePath = path.resolve(mockDir,file)
        let mock;
