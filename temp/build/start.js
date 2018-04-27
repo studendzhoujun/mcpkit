@@ -2,7 +2,7 @@
  * @Author: zhouJun 
  * @Date: 2018-04-25 16:05:15 
  * @Last Modified by: zhouJun
- * @Last Modified time: 2018-04-27 14:56:04
+ * @Last Modified time: 2018-04-27 15:49:05
  */
 const express = require('express')
 const path = require('path')
@@ -14,10 +14,14 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
 const webpackDevConfig = require('../webpack.config.js')
 const log = require('gutil-color-log')
 const app = express()
+const morgan = require('morgan')
 const compiler = webpack(webpackDevConfig)
 const glob = require('glob')
 const publicPath = '/'
 const port = process.env.npm_package_server_PORT || 3333
+// 日志
+morgan.format('weex','[weex] :method :url :response-time ms :status')
+app.use(morgan('weex'))
 //获取src入口文件
 const ip = require('ip').address()
 let urlList = []

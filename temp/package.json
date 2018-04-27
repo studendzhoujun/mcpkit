@@ -44,6 +44,7 @@
     "ip": "^1.1.4",
     "less-loader": "^4.0.5",
     "minimist": "^1.2.0",
+    "morgan": "^1.9.0",
     "postcss-plugin-px2rem": "^0.7.0",
     "postcss-plugin-weex": "^0.1.6",
     "serve": "^1.4.0",
