@@ -8,6 +8,8 @@ const fs = require('fs')
 const path = require('path')
 const colors = require('colors')
 const childProcess = require('child_process')
+const yarncmd = process.platform.match(/win/) ? 'yarn.cmd' : 'yarn'
+const npmcmd = process.platform.match(/win/) ? 'npm.cmd' : 'npm'
 const ENUM = {
     STATUS: {
         INFO: 1,
@@ -19,12 +21,14 @@ program
 .version(require('../package.json').version)
 .option('-v, version','list version')
 .option('-c, create','create a project')
+.option('-s, start', 'run server', start)
 .parse(process.argv)
 
 if (process.argv.length <= 2) {
     log(`
        mcp -v --version     list version
        mcp -c --create      create project
+       mcp -s --start       start project
     `)
 }
 
@@ -40,6 +44,11 @@ if(program.create){
         }else{
             log('此目录已存在',ENUM.STATUS.WARRING)
         }
+    })
+}
+if(program.start){
+    const install = childProcess.spawn(npmcmd, ['run', 'start'], {
+        stdio: 'inherit',
     })
 }
 /**
