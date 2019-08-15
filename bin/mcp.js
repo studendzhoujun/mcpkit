@@ -21,7 +21,7 @@ program
 .version(require('../package.json').version)
 .option('-v, version','list version')
 .option('-c, create','create a project')
-.option('-s, start', 'run server', start)
+.option('-s, start', 'run server')
 .parse(process.argv)
 
 if (process.argv.length <= 2) {
