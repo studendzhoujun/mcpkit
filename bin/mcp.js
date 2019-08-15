@@ -8,8 +8,9 @@ const fs = require('fs')
 const path = require('path')
 const colors = require('colors')
 const childProcess = require('child_process')
-const yarncmd = process.platform.match(/win/) ? 'yarn.cmd' : 'yarn'
-const npmcmd = process.platform.match(/win/) ? 'npm.cmd' : 'npm'
+const yarncmd = process.platform.match(/darwin/) ? 'yarn' : 'yarn.cmd'
+const npmcmd = process.platform.match(/darwin/) ? 'npm' : 'npm.cm'
+
 const ENUM = {
     STATUS: {
         INFO: 1,
@@ -22,6 +23,7 @@ program
 .option('-v, version','list version')
 .option('-c, create','create a project')
 .option('-s, start', 'run server')
+.option('-s, build', 'run build',build)
 .parse(process.argv)
 
 if (process.argv.length <= 2) {
@@ -29,6 +31,7 @@ if (process.argv.length <= 2) {
        mcp -v --version     list version
        mcp -c --create      create project
        mcp -s --start       start project
+       mcp -b --build       build project
     `)
 }
 
@@ -48,6 +51,11 @@ if(program.create){
 }
 if(program.start){
     const install = childProcess.spawn(npmcmd, ['run', 'start'], {
+        stdio: 'inherit',
+    })
+}
+function build(){
+    const install = childProcess.spawn(npmcmd, ['run', 'build'], {
         stdio: 'inherit',
     })
 }
