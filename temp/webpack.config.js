@@ -2,7 +2,7 @@
  * @Author: zhouJun 
  * @Date: 2017-12-07 16:20:31 
  * @Last Modified by: zhouJun
- * @Last Modified time: 2018-04-26 14:48:13
+ * @Last Modified time: 2019-08-15 15:34:51
  */
 
 const path = require('path')
@@ -25,10 +25,10 @@ const websourcePlugin = new CopyWebpackPlugin([
     from: path.resolve(__dirname, 'node_modules/weex-vue-render/dist/index.min.js'),
     to: 'assets/index.min.js',
   },
-  {
-    from: path.resolve(__dirname, 'node_modules/weexmodule/dist/weexModule.js'),
-    to: 'assets/weexmodule.js',
-  }
+  // {
+  //   from: path.resolve(__dirname, 'node_modules/weexmodule/dist/weexModule.js'),
+  //   to: 'assets/weexmodule.js',
+  // }
 ])
 //获取入口
 function getEntries(globPath) {

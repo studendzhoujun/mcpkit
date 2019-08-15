@@ -2,7 +2,7 @@
  * @Author: zhouJun 
  * @Date: 2017-12-06 16:43:45 
  * @Last Modified by: zhouJun
- * @Last Modified time: 2018-03-27 10:31:59
+ * @Last Modified time: 2019-08-15 15:35:08
  */
 
 const path = require('path')
@@ -26,10 +26,10 @@ const websourcePlugin = new CopyWebpackPlugin([
     from: path.resolve(__dirname, '../node_modules/weex-vue-render/dist/index.min.js'),
     to: 'assets/index.min.js',
   },
-  {
-    from: path.resolve(__dirname, '../node_modules/weexmodule/dist/weexModule.js'),
-    to: 'assets/weexmodule.js',
-  },
+  // {
+  //   from: path.resolve(__dirname, '../node_modules/weexmodule/dist/weexModule.js'),
+  //   to: 'assets/weexmodule.js',
+  // },
    {
     from: path.resolve(__dirname, '../lib/config.json'),
     to: '../',

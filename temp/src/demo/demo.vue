@@ -2,12 +2,12 @@
  * @Author: zhouJun 
  * @Date: 2018-01-03 13:54:09 
  * @Last Modified by: zhouJun
- * @Last Modified time: 2018-02-27 11:09:09
+ * @Last Modified time: 2019-08-15 15:36:00
  */
 
 <template>
    <div :style="objstyle" class="box">
-     <text :class="['col',isweb?'text':'']">hello gome</text>
+     <text :class="['col',isweb?'text':'']">hello</text>
    </div>  
 </template>
 <style scoped>
