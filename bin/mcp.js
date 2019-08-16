@@ -24,6 +24,8 @@ program
 .option('-c, create','create a project')
 .option('-s, start', 'run server')
 .option('-s, build', 'run build',build)
+.option('-h, help', 'list options',help)
+.option('-i, install', 'install package',installPackage)
 .parse(process.argv)
 
 if (process.argv.length <= 2) {
@@ -32,6 +34,8 @@ if (process.argv.length <= 2) {
        mcp -c --create      create project
        mcp -s --start       start project
        mcp -b --build       build project
+       mcp -h --help        list options
+       mcp -i --install     install package
     `)
 }
 
@@ -58,6 +62,21 @@ function build(){
     const install = childProcess.spawn(npmcmd, ['run', 'build'], {
         stdio: 'inherit',
     })
+}
+function installPackage(){
+    const install = childProcess.spawn(npmcmd, ['install'], {
+        stdio: 'inherit',
+    })
+}
+function help(){
+    log(`
+       mcp -v --version     list version
+       mcp -c --create      create project
+       mcp -s --start       start project
+       mcp -b --build       build project
+       mcp -h --help        list options
+       mcp -i --install     install package
+ `)
 }
 /**
  * log
@@ -91,9 +110,11 @@ function createApplication(app_name,urlpath){
     function complete() {
         log(`
             =====install dependencies:=====
-            cd ${urlpath} && npm install
-            =====run the app:==============
-            npm run start
+            cd ${urlpath} && mcp install
+            =====run the project:==============
+            mcp start
+            =====build the project:==============
+            mcp build
         `)
     }
 

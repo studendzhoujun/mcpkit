@@ -6,17 +6,17 @@
 
 # 下载依赖
  cd <name>
- npm install
+ mcp install
 
 # 启动项目
- npm start
+ mcp start
 
 ```
 ### 打包zip
 
 ``` bash
  # 打包之前修改lib/config.json
- npm run build
+ mcp build
  
 ````
 
@@ -29,5 +29,10 @@
 
 # 1.2.0
  npm start
+
+# 1.2.5
+ mcp install  
+ mcp start
+ mcp build
 ```
 
